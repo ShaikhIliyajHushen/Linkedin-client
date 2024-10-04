@@ -1,0 +1,120 @@
+.message {
+    position: fixed;
+    bottom: 0px;
+    margin-left: 180px;
+}
+
+.meassImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.online {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #44B700;
+    border-radius: 50%;
+    top: 38px;
+    left: 35px;
+}
+.settings {
+    margin-left: 25px;
+}
+.upButton {
+    /* margin-left: 160px; */
+    border-radius: 50%;
+    height: 45px !important;
+    width: 45px;
+    background-color: transparent;
+}
+
+.searchChat{
+    background-color: #EEF3F8 !important;
+    padding-left: 15px;
+}
+.searchChat:hover{
+    border: 1px solid black ;
+}
+
+
+.commentName {
+    margin-left: 10px;
+    font-weight: bold;
+    width: 100%
+}
+
+.cardEsign{
+    padding: 6px;
+    height: 72px;
+    /* background-color: #44B700; */
+    width: 280px !important;
+}
+
+.messageProfile {
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+}
+
+.massageName {
+    font-size: small;
+    font-weight: 600;
+}
+.time {
+    font-size: small !important;
+}
+
+.msg {
+    max-width: 215px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.Hr{
+    margin:11px !important;
+}
+.cardEsign:hover{
+    /* padding: 6px; */
+    height: 72px;
+    background-color: #EBEBEB;
+    width: 290px !important;
+}
+
+.chatList {
+    height: 370px;
+    overflow-y: scroll; /* vertical scrollbar */
+    overflow-x: hidden; /* hide horizontal scrollbar */
+    /* padding: 5px; */
+}
+
+.focused{
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
+}
+.focused Button {
+    width: 150px;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.focused Button:hover {
+    border-bottom: 4px solid rgb(43, 107, 47) !important;
+    background-color: transparent;
+    border: none;
+    color: rgb(43, 107, 47);
+    font-weight: bold;
+}
+
+
+/* @media screen and (max-width:480px) {
+    .message {
+        position: fixed;
+        bottom: 0px;
+        margin-left: 280px;
+    }
+  } */

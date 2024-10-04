@@ -1,0 +1,89 @@
+
+/* .rightCard{
+    margin-left: 74px;
+} */
+
+.stickyRightCard {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 90px;
+    flex: 0.2;
+    height: fit-content;
+    
+}
+
+.rightRoundImg {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-left: 70px;
+}
+
+.rightAdImage{
+    width: 75px;
+    height: 75px;
+    /* border-radius: 50%;
+    margin-left: 95px; */
+}
+
+.rightFallow {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    font-size: medium;
+}
+
+.fallowBtn {
+    background-color: transparent;
+    color: black;
+    border-radius: 30px;
+    width: 100px;
+    height: 40px;
+    margin: 25px;
+    font-weight: bold;
+}
+
+.linkedInCopy {
+    width: 65px;
+}
+.footerData{
+    margin-left: 10px;
+}
+
+
+@media screen and (max-width:480px) {
+    .rightCard {
+      width: 40em !important;
+      display: flex;
+      justify-content: center;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+
+    }
+    .footerData {
+        display: none;
+    }
+   
+  }
+
+
+  @media screen and (max-width:780px) {
+    /* .leftcard {
+      width: 40em !important;
+      display: flex;
+      justify-content: center;
+    }
+    .imgleft {
+        position: relative;
+    }
+    
+    .roundImg {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        top: 27px;
+        left: 42%
+    } */
+  }

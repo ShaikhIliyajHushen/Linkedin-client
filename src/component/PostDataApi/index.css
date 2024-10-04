@@ -1,0 +1,290 @@
+.profileImg {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin: 4px;
+}
+
+.profileImgPost {
+    width: 28px;
+    height: 27px;
+    border-radius: 50%;
+    margin: 4px;
+}
+
+.profileNamePost {
+    height: 30px !important;
+}
+
+.dividerLine {
+    margin: 0px !important;
+    margin-top: 10px !important;
+}
+
+.deleteBtnPost {
+    background-color: transparent;
+    height: 30px !important;
+    border-radius: 50%;
+    /* padding: 8px !important;  
+    margin-right: 10px; */
+}
+
+.profileNameInfo {
+    height: 60px;
+}
+
+
+.profileName {
+    height: 85px;
+}
+
+.userName {
+    font-weight: 500;
+    font-size: 16px;
+    width: 280px;
+}
+
+.userName span,
+p {
+    font-weight: 100;
+}
+
+.postImg {
+    width: 100%;
+    height: 350px;
+    background-color: white;
+    object-fit: contain;
+}
+
+.btnGrouplike {
+    width: 100%;
+    margin-top: 25px;
+    /* border-bottom-left-radius: 15px !important; */
+    /* background-color: transparent !important; */
+}
+
+.btnlLike {
+    border-bottom-left-radius: 11px !important;
+    background-color: transparent !important;
+}
+
+.btnlSend {
+    border-bottom-right-radius: 11px !important;
+    background-color: transparent !important;
+}
+
+.btnlCmtRe {
+    background-color: transparent !important;
+}
+
+/* .postImg:hover{
+    transform: scale(0.9); 
+    Adjust the scale value as per your preference 
+} */
+
+.postVideo {
+    width: 100%;
+    height: 420px;
+    background-color: #A0B4B7;
+}
+
+.comment {
+    height: 110px;
+}
+
+.btn {
+    height: 45px;
+}
+
+.postCommnetBtn {
+    font-weight: bold;
+    height: 35px;
+    width: 65px;
+    border-radius: 30px;
+    background-color: #0A66C2;
+}
+
+.ComnentIn {
+    position: relative;
+}
+
+.comIcon {
+    position: absolute;
+    margin-top: 12px;
+    /* padding-right: 5px; */
+    left: 460px
+}
+
+.deleteBtn {
+    background-color: transparent;
+    height: 38px !important;
+    border-radius: 50%;
+    padding: 10px !important;
+    margin-right: 5px;
+}
+
+.ComnentInput {
+    margin-left: 8px;
+    width: 470px;
+    border-radius: 100px;
+    border: 1px solid;
+    height: 43px;
+    padding: 20px;
+    padding-right: 80px;
+    margin-bottom: 5px;
+    border-color: rgb(0 0 0/.3) !important;
+}
+
+.CommnetImg {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+
+.commentProfile {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-left: 3px;
+}
+
+.commentName {
+    font-size: medium;
+    background-color: #F2F2F2;
+    width: 83%;
+    border-radius: 0 10px 10px 10px;
+    padding: 10px;
+    margin: 5px;
+}
+
+
+
+.msg {
+    width: 250px;
+    font-size: medium;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.time {
+    float: right;
+    font-weight: 100;
+    font-size: medium;
+}
+
+.btn-varint {
+    margin-left: 1rem;
+    border: none;
+    background-color: transparent;
+    height: 5vh;
+    margin-bottom: 5px;
+}
+
+.commentRating .dropdown-toggle::after {
+    display: none;
+}
+
+.replyBtn {
+    background: none;
+    border: none;
+    color: gray;
+    cursor: pointer;
+    padding: 0px;
+    font-size: 11px;
+
+}
+
+.replyCommnetBtn {
+    font-weight: bold;
+    height: 25px;
+    width: 60px;
+    border-radius: 40px;
+    background-color: #0A66C2;
+    color: white;
+    /* Ensure the text color contrasts with the background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.reply-comment {
+    margin-left: 92px;
+}
+
+.replyCommentName {
+    font-size: medium;
+    background-color: #F2F2F2;
+    width: 80%;
+    border-radius: 0 10px 10px 10px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.replyProfile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 2px;
+}
+.ReplyInput {
+    margin-left: 8px;
+    width: 406px;
+    border-radius: 100px;
+    border: 1px solid;
+    height: 40px;
+    padding: 15px;
+    padding-right: 80px;
+    margin-bottom: 3px;
+    border-color: rgb(0 0 0/.3) !important;
+}
+
+.replyImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.emoji-picker-react {
+    position: absolute;
+    z-index: 1;
+}
+
+.replyComIcon {
+    position: absolute;
+    margin-top: 12px;
+    /* padding-right: 5px; */
+    left: 440px
+}
+
+
+@media screen and (max-width:480px) {
+    .responsive {
+        width: 620px !important;
+        /* margin-left: 23px !important; */
+        /* margin: 10px; */
+        /* margin-top: 8px; */
+    }
+
+    .postImg {
+        width: 100%;
+        height: 520px;
+        background-color: #A0B4B7;
+    }
+
+
+}
+
+@media screen and (max-width:780px) {
+    .responsiveTablet {
+        width: 640px !important;
+        /* margin-left: 22px ; */
+        margin: 10px;
+        margin-top: 8px;
+    }
+}

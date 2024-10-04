@@ -1,0 +1,79 @@
+body {
+    background-color: #F3F2EF;
+}
+
+/* .headSpace {
+    margin-top: 65px !important;
+} */
+.leftSideCardDetails{
+    width: 20% !important;
+    /* margin-left: 73px; */
+}
+/* .rightSideCardDetails{
+    width: 25% !important;
+} */
+
+.divider{    
+    /* display: flex;
+    align-items: center; */
+    margin: 3px !important;
+    /* color: rgba(0, 0, 0, 0.88);
+    font-weight: 500; */
+    /* font-size: 16px; */
+    /* white-space: nowrap;
+    text-align: center;
+    border-block-start: 0 rgba(5, 5, 5, 0.06); */
+}
+
+
+.input {
+    margin-left: 4px;
+    margin-top: 3px;
+    width:478px;
+    border-radius: 100px;
+    border: 1px solid;
+    border-color: rgb(0 0 0/.3) !important;
+    height: 47px;
+    padding: 20px;
+}
+
+.gallery {
+    width: 18px;
+    height: 20px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+   
+}
+
+.gallaryBtn{
+    background-color: transparent !important;
+    border: none;
+    margin-right: 30px;
+}
+
+@media screen and (max-width:480px) {
+    /* .headSpace {
+    } */
+    .galleryCard{
+        width: 620px !important;
+        /* margin-left: 13px ; */
+        margin: 5px;
+        margin-top: 10px ;
+    }
+    .input{
+        width: 510px;
+    }
+}
+
+@media screen and (max-width:780px) {
+    .galleryCard{
+        width: 640px !important;
+        /* margin-left: 22px ; */
+        margin-top: 10px;
+    }
+    .input{
+        width: 530px;
+    }
+  }
+
+  

@@ -1,0 +1,126 @@
+.mainContainer {
+    margin-top: 76px !important;
+    /* padding: 15px; */
+    display: flex;
+    justify-content: center;
+}
+
+
+.profileContainer {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    height: 420px;
+    width: 63%;
+    position: relative;
+    /* margin-left: 10px; */
+
+}
+.CoverPic{
+    /* position: relative; */
+    width: 100%;
+    background-color: white;
+    height: 200px;
+    border-bottom: 1px solid black;
+    border-top-right-radius: 15px;
+}
+
+
+.profileRight {
+    /* background-color: rgb(255, 255, 255); */
+    /* height: 350px; */
+    /* width: 150px; */
+    border-radius: 15px;
+    width: 22%;
+    margin-left: 21px;
+    margin-right: 20px;
+} 
+
+
+
+.CoverPicUpload{
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    top: 19px;
+    right: 20px;
+    background-color:rgb(241, 241, 241);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:none;
+}
+
+
+.ProfileRountPic{
+    position: absolute;
+    width: 161px;
+    height: 160px;
+    /* border: 1px solid black; */
+    border-radius: 50%;
+    top: 85px;
+    left: 23px;
+    background-color:white;
+    padding:4px;
+}
+
+
+
+.prodetails{
+    background-color: rgb(255, 255, 255);
+    height: 182px;
+    border-radius: 10px;
+    padding: 14px;
+    width: 295px;
+}
+.divider_1{    
+    margin: 5px !important;
+}
+.proLang{
+    font-size: large;
+    font-weight: 500;
+}
+.eidtPen{
+    margin-left: 100px !important;
+}
+.eidtPen_1{
+    margin-left: 72px !important;
+}
+.prodetails_1{
+    background-color: rgb(255, 255, 255);
+    height: 260px;
+    border-radius: 10px;
+    padding: 14px;
+    width: 295px;
+}
+.rightRoundImg_1 {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-left: 30px;
+}
+
+.rightAdImage_1{
+    width: 75px;
+    height: 75px;
+    /* border-radius: 50%;
+    margin-left: 95px; */
+}
+
+.rightFallow_1{
+    width: 100%;
+    height: 34px;
+    padding: 10px;
+    font-size:14px;
+}
+
+.fallowBtn_1{
+    background-color: transparent;
+    color: black;
+    border-radius: 30px;
+    width: 80px;
+    height: 40px;
+    margin: 25px;
+    font-weight: 600;
+    
+}

@@ -1,0 +1,45 @@
+.hero-section-navbr{
+    height: 100vh;
+    background-color: white;
+}
+.logoLogin{
+    width: 120px;
+}
+.formBody{
+    display: flex;
+    justify-content: center;
+}
+.login{
+    width: 350px;
+    /* box-shadow: 0px 1px 1px 1px; */
+}
+
+.signUpLink a{
+    text-decoration: none;
+}
+
+.googles {
+    width: 100%;
+    border-radius: 30px;
+    height: 40px;
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    margin-top: 10px;
+    border-color: black;
+    /* margin-right: 11px; */
+}
+
+@media screen and (max-width:480px) {
+    .hero-section-navbr{
+        height: 100%;
+        background-color: white;
+    }
+    .login{
+        margin-top: 20px;
+        margin: 25px;
+    }
+
+    .inputSignLogin{
+        width: 100%;
+    }
+}

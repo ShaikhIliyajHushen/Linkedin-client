@@ -1,0 +1,98 @@
+    .navbar {
+        position: fixed;
+        top: 0px;
+        width: 100vw;
+        z-index: 999;
+        height: 50px;
+        border-bottom: 1px solid var(--color-border-faint);
+    }
+
+    .container {
+        margin-top: 0px !important;
+    }
+
+    .logo {
+        margin-left: 81px;
+    }
+
+    .logo img {
+        /* width: 59%; */
+        height: 35px;
+        /* margin-left: 25px; */
+        border-radius: 4px;
+    }
+
+    .home {
+        font-size: small;
+    }
+
+    .nav {
+        margin-right: 310px;
+    }
+
+    /* .nav-bar {
+        max-height: 3em;
+    } */
+
+    .active:hover {
+        border-bottom: 3px solid;
+        border-radius: 3px;
+    }
+
+    .logout Button {
+        border: none !important;
+        background-color: transparent !important;
+        color: red !important;
+    }
+
+    .Search {
+        border-radius: 3px !important;
+        color: black !important;
+        background-color: #EEF3F8 !important;
+    }
+
+    .Search:hover {
+        border: 2px solid black !important;
+    }
+
+    .profile-dropdown {
+        /* width: 300px; */
+    }
+
+    .text {
+        width: 19rem !important;
+    }
+
+    #dropdown-basic-button {
+        background-color: transparent !important;
+        color: black;
+        border: none;
+    }
+
+    .AccMan {
+        margin-left: 10px !important;
+        margin-top: 8px !important;
+    }
+
+
+
+
+    @media screen and (max-width:480px) {
+        .desktop-only {
+            display: none;
+        }
+
+        .mobile-only {
+            display: block;
+        }
+    }
+
+    @media screen and (max-width:780px) {
+        .desktop-only {
+            display: none;
+        }
+
+        .mobile-only {
+            display: block;
+        }
+    }

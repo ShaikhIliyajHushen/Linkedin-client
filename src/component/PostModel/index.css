@@ -1,0 +1,96 @@
+.Anyone{
+    width: 130px;
+    border-radius: 20px;
+    height: 38px !important;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    color: black;
+}
+
+.border-input {
+    border: none;
+    outline: none;
+    width: 100%;
+   
+  }
+  
+  .border-input:focus {
+    outline: none;
+  }
+
+  .videoInput{
+    width: 100%;
+    height: 50px;
+    border-radius: 10px ;
+
+  }
+
+  .videoBtn{
+    display: flex;
+    justify-content: center;
+  }
+
+  .profileImg {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin: 4px;
+}
+
+
+.custom-modal {
+  max-width: 750px; /* Set the desired width */
+  margin: auto; /* Center the modal horizontally */
+  padding: 30px;
+}
+.profileImg01 {
+  width: 55px;
+  height: 53px;
+  border-radius: 50%;
+  margin: 4px;
+}
+
+
+.btnclose {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  width: 35px;
+  height: 16px;
+  border-radius: 50%;
+  /* margin-right: 4px; Adjust the margin as needed */
+}
+
+.cardBody {
+    max-height: 350px ; /* Adjust as needed */
+    overflow-y: auto;
+  }
+
+
+
+
+.profileName {
+    height: 110px;
+    /* padding: 40px; */
+}
+
+.userName {
+    font-weight: 500;
+    font-size: large;
+    width: 280px;
+}
+
+.userName span,
+p {
+    font-weight: 100;
+}
+
+.postImg {
+    width: 100%;
+    height: 500px;
+    background-color: #A0B4B7;
+}

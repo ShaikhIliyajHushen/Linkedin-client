@@ -1,0 +1,226 @@
+.Navsection {
+    height: 100vh;
+    background-color: #F3F2EF;
+}
+
+.navbarSignUp {
+    background-color: transparent !important;
+    height: 85px;
+}
+
+.linkedInNav {
+    width: 135px;
+    margin-left: 105px;
+}
+
+.heading {
+    margin-top: 80px;
+    font-size: 32px;
+    margin-right: 25px;
+}
+
+.signUp {
+    width: 400px;
+    /* height: 450px; */
+    background-color: rgb(255, 255, 255);
+    /* margin-left: 565px; */
+    border-radius: 9px;
+    margin-right: 22px;
+    display: flex;
+    justify-content: center;
+}
+
+.signUp form {
+    width: 100%;
+    margin: 22px;
+}
+
+.signUp form p {
+    font-size: small;
+}
+
+.agreeBtn {
+    width: 100%;
+    border-radius: 30px;
+    height: 48px;
+    color: white;
+    background-color: #0A66C2;
+}
+
+.name {
+    width: 400px;
+    /* height: 250px; */
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.dirnt {
+    background-color: #F3F2EF;
+    width: 100%;
+    height: 200px;
+}
+
+.or {
+    font-size: small;
+}
+
+.google {
+    width: 337px;
+    border-radius: 30px;
+    height: 40px;
+    background-color: transparent;
+    color: black;
+    margin-left: 6px;
+    border-color: black;
+    /* margin-right: 11px; */
+}
+
+.inputSign {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid;
+    padding: 15px;
+    height: 32px;
+}
+
+.labelEmail {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.googleImg {
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+    margin-bottom: 5px;
+}
+
+.google:hover {
+    background-color: transparent;
+    color: black;
+}
+
+.bottomText {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+    background-color: rgb(252, 252, 252);
+    bottom: 0px;
+}
+
+.footer p {
+    font-weight: 500;
+    font-size: small;
+}
+
+.foterLinkdn {
+    width: 65px;
+    height: 18px;
+}
+
+.siginLink a{
+text-decoration: none;
+}
+
+.profileImge{
+    display: flex;
+    flex-direction: column;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+}
+.profileImge img{
+    border-radius: 50%;
+}
+.gallaryBtnProfile{
+    position: absolute;
+    top: 235px;
+    right: 700px;
+}
+.gallaryBtnProfile Button{
+    background-color:#00A884;
+    border: none;
+    border-radius: 50%;
+    height: 40px;
+}
+
+@media screen and (max-width:480px) {
+    .heading {
+        margin-top: 100px;
+        font-size: 15px;
+        margin-left: 10px;
+    }
+    .gallaryBtnProfile{
+        position: absolute;
+        top: 230px;
+        right: 90px;
+    }
+    .footer {
+    display: none;
+    }
+    .footer p {
+        display: none;
+    }
+    .foterLinkdn {
+        display: none;
+    }
+    .signUp {
+        width: 310px;
+        margin-left: 20px;
+        /* height: 450px; */
+        background-color: rgb(255, 255, 255);
+        /* margin-left: 565px; */
+        border-radius: 9px;
+    }
+    .google {
+        width: 270px;
+        border-radius: 30px;
+        height: 40px;
+        background-color: transparent;
+        color: black;
+        margin-left: 10px;
+        border-color: black;
+    }
+
+    .nameFL {
+        width: 330px;
+        /* height: 250px; */
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
+    
+    .dirnt {
+        background-color: #F3F2EF;
+        width: 100%;
+        height: 200px;
+    }
+    
+    .or {
+        font-size: small;
+    }
+    
+    .inputSign {
+        width: 289px;
+        border-radius: 3px;
+        border: 1px solid;
+        padding: 15px;
+        height: 32px;
+    }
+    
+    .labelEmail {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+  }
