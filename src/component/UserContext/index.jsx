@@ -13,7 +13,7 @@ export const UserProvider = ({ children }) => {
   const [linkedOneId, setLinkedOneId] = useState(null);
   const [profileImg, setProfileImg] = useState('');
   const [coverImg, setCoverImg] = useState('');
-
+  const [welcome,setWelcome] = useState('');
   // const [id setId]= useState();
 
   // const TokenData = localStorage.getItem("Token")
@@ -56,6 +56,7 @@ export const UserProvider = ({ children }) => {
         .then((res) => {
           setCoverImg(res?.data?.data.cover);
           setProfileImg(res?.data?.data.profile);
+          setWelcome(res.data.data.welcomePost)
         })
         .catch((err) => {
           console.log('API Error:', err);
@@ -70,7 +71,8 @@ return (
       coverImg, setCoverImg, profileImg,
       setProfileImg, firstname, lastname, setFirstname,
       setLastname, linkedOneId,
-      setLinkedOneId
+      setLinkedOneId,
+      welcome
     }}>
       {children}
     </UserContext.Provider>

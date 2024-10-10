@@ -81,10 +81,10 @@ function Index() {
                         <div className='chatList'>
                             <div className='d-flex cardEsign'>
                                 <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    // src={profileImg} 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                    <img className='messageProfile'
+                                        // src={profileImg} 
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -98,9 +98,9 @@ function Index() {
 
                             <div className='d-flex cardEsign'>
                                 <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -112,10 +112,10 @@ function Index() {
                                 </div>
                             </div>
                             <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -127,10 +127,10 @@ function Index() {
                                 </div>
                             </div>
                             <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -142,10 +142,10 @@ function Index() {
                                 </div>
                             </div>
                             <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -157,10 +157,10 @@ function Index() {
                                 </div>
                             </div>
                             <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -172,10 +172,10 @@ function Index() {
                                 </div>
                             </div>
                             <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -187,10 +187,10 @@ function Index() {
                                 </div>
                             </div>
                             <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -202,10 +202,10 @@ function Index() {
                                 </div>
                             </div>
                             <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -217,10 +217,10 @@ function Index() {
                                 </div>
                             </div>
                             <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -232,10 +232,25 @@ function Index() {
                                 </div>
                             </div>
                             <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
+                                </div>
+                                <div className='ms-1 massageName'>
+                                    <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
+                                    <div className='msg'>
+                                        <span >Hii,How dfdsfgdgfdare youdfgfdsadfgdsafg</span>
+                                        <hr className='Hr' />
+                                    </div>
+
+                                </div>
+                            </div>
+                            {/* <div className='d-flex cardEsign'>
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -247,10 +262,10 @@ function Index() {
                                 </div>
                             </div>
                             <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -262,10 +277,10 @@ function Index() {
                                 </div>
                             </div>
                             <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
+                                <div className='mt-1'>
+                                    <img className='messageProfile'
+                                        src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                                        alt="" />
                                 </div>
                                 <div className='ms-1 massageName'>
                                     <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
@@ -275,22 +290,7 @@ function Index() {
                                     </div>
 
                                 </div>
-                            </div>
-                            <div className='d-flex cardEsign'>
-                            <div className='mt-1'>
-                                    <img className='messageProfile' 
-                                    src={profileImg ? profileImg : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} 
-                                    alt="" />
-                                </div>
-                                <div className='ms-1 massageName'>
-                                    <span>{firstname + " " + lastname}<span className='time'>May 12</span></span>
-                                    <div className='msg'>
-                                        <span >Hii,How dfdsfgdgfdare youdfgfdsadfgdsafg</span>
-                                        <hr className='Hr' />
-                                    </div>
-
-                                </div>
-                            </div>
+                            </div> */}
 
                         </div>
                     </>

@@ -33,7 +33,7 @@ function Index() {
     const [commentRname, setCommentR] = useState('')
     const [likeCount, setLikeCount] = useState({})
 
-    const { setProfileImg, setCoverImg, profileImg } = useContext(UserContext);
+    const { setProfileImg, setCoverImg, profileImg, welcome } = useContext(UserContext);
 
     const TokenData = localStorage.getItem("Token")
     const decodedToken = jwt_decode(TokenData)
@@ -347,23 +347,23 @@ function Index() {
 
     const Skeletons = () => (
         <div className='col-12 text-center nodata' >
-            <Card className='mb-1 responsive responsiveTablet ' style={{ width: '35rem', height: '72vh', borderRadius: '12px', backgroundColor: 'white' }}>
+            <Card className='mb-1 responsive responsiveTablet ' style={{ width: '35rem', height: '70vh', borderRadius: '12px', backgroundColor: 'white' }}>
                 <div className='profileName d-flex'>
                     <div>
                         <Skeleton variant="circular" sx={{
-                            width: "12vh",
-                            height: "12vh",
+                            width: "10vh",
+                            height: "10vh",
                             margin: '20px'
                         }} />
                     </div>
                     <div className='userName mt-3'>
-                        <Skeleton sx={{ width: '240px', height: '35px' }} />
-                        <Skeleton sx={{ width: '200px', height: '34px' }} />
+                        <Skeleton sx={{ width: '240px', height: '32px' }} />
+                        <Skeleton sx={{ width: '200px', height: '31px' }} />
                         <Skeleton sx={{ width: '180px', height: '30px' }} />
                     </div>
                 </div>
                 <div>
-                    <Skeleton sx={{ width: '100%', height: '350px' }} />
+                    <Skeleton sx={{ width: '100%', height: '350px', marginTop: '0px' }} />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                     <div style={{ width: '100px', height: '24px', }}>
@@ -379,6 +379,11 @@ function Index() {
             </Card>
         </div>
     )
+
+
+ 
+      
+      
 
     const [loadedImages, setLoadedImages] = useState({});
 
@@ -442,15 +447,15 @@ function Index() {
     useEffect(() => {
         const fetchLikedPosts = async () => {
             try {
-                const response = await apiFetch('FETCH_LIKED_POSTS', {id}, 'GET');
+                const response = await apiFetch('FETCH_LIKED_POSTS', { id }, 'GET');
                 const likedPosts = response?.likedPosts || [];
-                console.log("likedPosts",likedPosts)
+                console.log("likedPosts", likedPosts)
                 const likeButtonState = likedPosts.reduce((acc, post) => {
                     acc[post._id.toString()] = true;  // Use _id as the key
                     return acc;
                 }, {});
 
-             console.log("likeButtonState",likeButtonState)
+                console.log("likeButtonState", likeButtonState)
                 setLikeBtn(likeButtonState);
             } catch (error) {
                 console.error("Error fetching liked posts", error);
@@ -483,7 +488,7 @@ function Index() {
         }
     };
 
-
+  console.log("welcome",welcome)
 
     return (
         <>
@@ -612,20 +617,20 @@ function Index() {
                                             <span className="m-2 btnicons">Like</span>
                                         </Button> */}
 
-<Button
-    className='btnlLike'
-    variant="light"
-    onClick={() => handleLikesOnPost(items._id)}
->
-    {likeBtn[items._id] ? (
-        <i className="fa-solid fa-thumbs-up fs-6"></i>  // Liked state (solid icon)
-    ) : (
-        <i className="fa-regular fa-thumbs-up fs-6"></i>  // Unliked state (outline icon)
-    )}
-    <span className="m-2 btnicons">Like</span>
-    {console.log("likeBtn[items._id]:", likeBtn[items._id])}
-    {console.log("Type of items._id:", typeof items._id)};  
-</Button>
+                                        <Button
+                                            className='btnlLike'
+                                            variant="light"
+                                            onClick={() => handleLikesOnPost(items._id)}
+                                        >
+                                            {likeBtn[items._id] ? (
+                                                <i className="fa-solid fa-thumbs-up fs-6"></i>  // Liked state (solid icon)
+                                            ) : (
+                                                <i className="fa-regular fa-thumbs-up fs-6"></i>  // Unliked state (outline icon)
+                                            )}
+                                            <span className="m-2 btnicons">Like</span>
+                                            {console.log("likeBtn[items._id]:", likeBtn[items._id])}
+                                            {console.log("Type of items._id:", typeof items._id)};
+                                        </Button>
 
 
                                         <Button className='btnlCmtRe' variant="light" onClick={() => CommentVisibility(items._id)}>

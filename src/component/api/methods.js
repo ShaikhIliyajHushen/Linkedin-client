@@ -3,10 +3,10 @@
 
 
 
-function getheaders() {
-    var options = { 'Content-Type': 'application/json' };
-    return options;
-}
+// function getheaders() {
+//     var options = { 'Content-Type': 'application/json' };
+//     return options;
+// }
 
 
 // export function Get(url) {
