@@ -40,26 +40,26 @@ function Index() {
     }
   }
 
-  function formatTime(timestamp) {
-    const commentTime = moment(timestamp, 'dddd, HH:mm');
-    const now = moment();
+  // function formatTime(timestamp) {
+  //   const commentTime = moment(timestamp, 'dddd, HH:mm');
+  //   const now = moment();
 
-    const diffInMinutes = now.diff(commentTime, 'minutes');
-    const diffInHours = now.diff(commentTime, 'hours');
-    const diffInDays = now.diff(commentTime, 'days');
+  //   const diffInMinutes = now.diff(commentTime, 'minutes');
+  //   const diffInHours = now.diff(commentTime, 'hours');
+  //   const diffInDays = now.diff(commentTime, 'days');
 
-    if (diffInMinutes < 1) {
-      return 'Just now';
-    } else if (diffInMinutes < 60) {
-      return `${diffInMinutes} ${diffInMinutes === 1 ? 'minute' : 'minutes'} ago`;
-    } else if (diffInHours < 24) {
-      return `${diffInHours} ${diffInHours === 1 ? 'hour' : 'hours'} ago`;
-    } else if (diffInDays < 30) {
-      return `${diffInDays} ${diffInDays === 1 ? 'day' : 'days'} ago`;
-    } else {
-      return commentTime.format('MMM DD');
-    }
-  }
+  //   if (diffInMinutes < 1) {
+  //     return 'Just now';
+  //   } else if (diffInMinutes < 60) {
+  //     return `${diffInMinutes} ${diffInMinutes === 1 ? 'minute' : 'minutes'} ago`;
+  //   } else if (diffInHours < 24) {
+  //     return `${diffInHours} ${diffInHours === 1 ? 'hour' : 'hours'} ago`;
+  //   } else if (diffInDays < 30) {
+  //     return `${diffInDays} ${diffInDays === 1 ? 'day' : 'days'} ago`;
+  //   } else {
+  //     return commentTime.format('MMM DD');
+  //   }
+  // }
 
 
 
