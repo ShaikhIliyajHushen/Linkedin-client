@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 // import { useNavigate } from 'react-router';
 
 export const UserContext = createContext();
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 export const UserProvider = ({ children }) => {
   // const navigate = useNavigate();
@@ -52,7 +53,7 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:3003/signup/${id}`)
+      axios.get(`${baseUrl}/signup/${id}`)
         .then((res) => {
           setCoverImg(res?.data?.data.cover);
           setProfileImg(res?.data?.data.profile);

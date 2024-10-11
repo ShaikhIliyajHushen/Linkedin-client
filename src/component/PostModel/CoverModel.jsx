@@ -8,6 +8,8 @@ import jwt_decode from "jwt-decode";
 import axios from 'axios';
 import { useEffect } from 'react';
 
+const baseUrl = process.env.REACT_APP_BASE_URL;
+
 function CoverModel(props) {
   const [show, setShow] = useState(true);
   const { cover, profileS } = props;
@@ -194,7 +196,7 @@ function CoverModel(props) {
             profile: data.url,
             time: getCurrentTime()
           };
-          return fetch(`http://localhost:3003/userProfile/${id}/profile`, {
+          return fetch(`${baseUrl}/userProfile/${id}/profile`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -238,7 +240,7 @@ function CoverModel(props) {
             cover: data.url,
             time: getCurrentTime()
           };
-          return fetch(`http://localhost:3003/cover/${id}/cover`, {
+          return fetch(`${baseUrl}/cover/${id}/cover`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
