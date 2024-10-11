@@ -76,10 +76,17 @@ export const apiFetch = async (endpointKey, params = {}, method = 'GET', request
                 message: error.message
             };
             throw detailedError;
-        } else {
-            // If no response, throw a generic error
-            throw new Error(`Error fetching ${endpointKey}: ${error.message}`);
-        }
+        // } else {
+        //     // If no response, throw a generic error
+        //     throw new Error(`Error fetching ${endpointKey}: ${error.message}`);
+        // }
+    } else if (error.message && error.message.includes("CORS")) {
+        // Handle CORS error specifically
+        throw new Error('CORS error: Your request was blocked due to CORS policy. Please check the server configuration.');
+    } else {
+        // If no response, throw a generic error
+        throw new Error(`Error fetching ${endpointKey}: ${error.message}`);
+    }
     }
 };
 
