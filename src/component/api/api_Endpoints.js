@@ -3,6 +3,7 @@
 import axios from 'axios';
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
+console.log("baseUrl",baseUrl)
 const cloudinaryUrl = process.env.REACT_APP_CLOUD_STORAGE_URL;
 
 export const API_ENDPOINTS = {
