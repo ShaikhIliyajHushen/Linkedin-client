@@ -69,7 +69,7 @@ export const apiFetch = async (endpointKey, params = {}, method = 'GET', request
         return response.data;
     } catch (error) {
          // Check if error has a response and include status code and data
-         if (error.response) {
+         if (error.response && error.response.status === 409) {
             // Create a detailed error object including status and data
             const detailedError = {
                 status: error.response.status,

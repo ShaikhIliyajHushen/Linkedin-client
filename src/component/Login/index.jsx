@@ -55,29 +55,47 @@ function Index() {
         [],
     );
 
+    // const handleEmail = (e) => {
+    //     let email = e.target.value;
+    //     if (!email.match(ergx)) {
+    //         setEmailError(true)
+    //     }
+    //     else {
+    //         setEmailError(false)
+    //     }
+    //     setEmail(email)
+    // }
+
+    // const handlePassword = (e) => {
+    //     let password = e.target.value;
+    //     if (!password.match(prgx)) {
+    //         setPasswordError(true)
+    //     }
+    //     else {
+    //         setPasswordError(false)
+    //     }
+    //     setPassword(password)
+    // }
+
     const handleEmail = (e) => {
         let email = e.target.value;
+        setEmail(email);
         if (!email.match(ergx)) {
-            setEmailError(true)
+          setEmailError(true);
+        } else {
+          setEmailError(false);
         }
-        else {
-            setEmailError(false)
-        }
-        setEmail(email)
-    }
-
-    const handlePassword = (e) => {
+      };
+    
+      const handlePassword = (e) => {
         let password = e.target.value;
+        setPassword(password);
         if (!password.match(prgx)) {
-            setPasswordError(true)
+          setPasswordError(true);
+        } else {
+          setPasswordError(false);
         }
-        else {
-            setPasswordError(false)
-        }
-        setPassword(password)
-    }
-
-
+      };
 
     const handleJoinClick = async (e) => {
         e.preventDefault();

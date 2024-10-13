@@ -15,7 +15,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from 'react-router';
 import { apiFetch } from '../api/api_Endpoints';
 import LinearProgress from '@mui/material/LinearProgress';
-import {Box} from '@mui/material';
+import { Box } from '@mui/material';
 
 function BasicExample() {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ function BasicExample() {
   const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState();
   const [passwordError, setPasswordError] = useState(false);
-  const ergx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+  const ergx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail\.com$/;
   const prgx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/
   let a = localStorage.getItem("id");
 
@@ -60,31 +60,52 @@ function BasicExample() {
     [],
   );
 
+  // const handleEmail = (e) => {
+  //   let email = e.target.value;
+  //   if (!email.match(ergx)) {
+  //     setEmailError(true)
+  //     return;
+  //   }
+  //   else {
+  //     setEmailError(false)
+  //   }
+  //   setEmail(email)
+  // }
+
+  // const handlePassword = (e) => {
+  //   let password = e.target.value;
+  //   if (!password.match(prgx)) {
+  //     setPasswordError(true)
+  //     return;
+  //   }
+  //   else {
+  //     setPasswordError(false)
+  //   }
+  //   setPassword(password)
+  // }
+
   const handleEmail = (e) => {
     let email = e.target.value;
+    setEmail(email);
     if (!email.match(ergx)) {
-      setEmailError(true)
-      return;
+      setEmailError(true);
+    } else {
+      setEmailError(false);
     }
-    else {
-      setEmailError(false)
-    }
-    setEmail(email)
-  }
+  };
 
   const handlePassword = (e) => {
     let password = e.target.value;
+    setPassword(password);
     if (!password.match(prgx)) {
-      setPasswordError(true)
-      return;
+      setPasswordError(true);
+    } else {
+      setPasswordError(false);
     }
-    else {
-      setPasswordError(false)
-    }
-    setPassword(password)
-  }
+  };
 
-  const [loading, setLoading] = useState(false); // Add loading state
+
+  const [loading, setLoading] = useState(false); 
   const [responseMessage, setResponseMessage] = useState('');
 
   // const handleSubmitFun = async (e) => {
@@ -200,21 +221,33 @@ function BasicExample() {
           password: password,
         };
         const res = await apiFetch('GET_ALL_SIGNUP', {}, 'POST', requestBody);
-        console.log("res", res);
+        console.log("res==>", res.data);
         setLinkedId(res._id)
-        if (res.status === 409 || res.message === 'Email already exists' || res.status === 400 || res.message === 'Please enter a valid email') {
-          setResponseMessage(res.message || 'Error occurred');
-          openNotification('topLeft');
-        } else {
-          handleEmailSend();
-          setShowAnotherCard(true);
-        }
-      } catch (err) {
-        console.error('Error object:', err);
-        setResponseMessage('An unexpected error occurred.');
-      } finally {
-        setLoading(false); // Stop loading
+       // Check for specific error conditions
+      if (res.status === 409) {
+        setResponseMessage(res.data?.message || 'Email already exists');
+        openNotification('topLeft');
+      } else if (res.status === 400) {
+        setResponseMessage(res.data?.message || 'Please enter a valid email');
+        openNotification('topLeft');
+      } else {
+        // Successful registration
+        setLinkedId(res._id);
+        handleEmailSend();
+        setShowAnotherCard(true);
       }
+    } catch (err) {
+      console.error('Error object:', err);
+      if (err.status === 409) {
+        setResponseMessage(err.data?.message || 'Email already exists');
+      } else if (err.status === 400) {
+        setResponseMessage(err.data?.message || 'Please enter a valid email');
+      } else {
+        setResponseMessage('An unexpected error occurred.');
+      }
+    } finally {
+      setLoading(false);
+    }
     }
   };
 
@@ -258,37 +291,40 @@ function BasicExample() {
       </div>
       <div className='CenterContent d-flex justify-content-center'>
         <div className='textAlign-center'>
-          <div>
-            {loading ? <Box sx={{ width: '95%'}}>
-              <LinearProgress />
-            </Box> : responseMessage && <div style={{ color: 'red' }}>{responseMessage}</div>}
-          </div>
-          <div className='signUp mt-3 p-1 '>
-            {showAnotherCard ? (
-              <UserName linkedId={linkedId} email={email} password={password} setShowAnotherCard={setShowAnotherCard} />
-            ) : (
-              <Form onSubmit={handleSubmitFun}>
-                <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
-                  <label className='labelEmail mb-1'>Email or phone number</label>
-                  <div>
-                    <input className='inputSign' type="text" name="email" onChange={handleEmail} value={email} />
-                  </div>
-                </Form.Group>
-                {emailError ? <span style={{ color: 'red' }}>Invalid Email</span> : ""}
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                  <label className='labelEmail mb-1'>Password (6 or more characters)</label>
-                  <div>
-                    <input className='inputSign' type="password" value={password} onChange={handlePassword} name="password" />
-                  </div>
-                </Form.Group>
-                {passwordError ? <span style={{ color: 'red' }}>uppercase letter, one digit, and one special character</span> : ""}
-                <p className='text-center'>By clicking Agree & Join, you agree to the LinkedIn <span className='text-primary fw-bold'> User Agreement, Privacy Policy,</span> and <span className='text-primary fw-bold'>Cookie Policy.</span> </p>
-                <Button type='submit' className='agreeBtn'>Agree & Join</Button>
-                <Divider><span className='or'>Or</span></Divider>
-                {/* <Button onClick={() => loginWithRedirect()} className='google'> <span ><img className='googleImg' src={google} alt="" /></span> <span className=''>Continue with Google</span> </Button> */}
-                <h6 className='mt-3 d-flex justify-content-center'>Already on LinkedIn? <span className='text-primary ms-1 siginLink'> <a href="/">Sign in</a></span></h6>
-              </Form>
-            )}
+          <div className='signUp mt-3'>
+            <div>
+              {loading ? <Box sx={{ width: '96%',marginLeft:'8px' }}>
+                <LinearProgress />
+              </Box> : responseMessage && <div style={{ color: 'red' }}>{responseMessage}</div>}
+            </div>
+            <div>
+              {showAnotherCard ? (
+                <UserName linkedId={linkedId} email={email} password={password} setShowAnotherCard={setShowAnotherCard} />
+              ) : (<>
+
+                <Form onSubmit={handleSubmitFun} className='p-4'>
+                  <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
+                    <label className='labelEmail mt-2 mb-1'>Email or phone number</label>
+                    <div>
+                      <input className='inputSign' type="text" name="email" onChange={handleEmail} value={email} />
+                    </div>
+                  </Form.Group>
+                  {emailError ? <span style={{ color: 'red' }}>Invalid Email</span> : ""}
+                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <label className='labelEmail mb-1'>Password (6 or more characters)</label>
+                    <div>
+                      <input className='inputSign' type="password" value={password} onChange={handlePassword} name="password" />
+                    </div>
+                  </Form.Group>
+                  {passwordError ? <span style={{ color: 'red' }}>uppercase letter, one digit, and one special character</span> : ""}
+                  <p className='text-center'>By clicking Agree & Join, you agree to the LinkedIn <span className='text-primary fw-bold'> User Agreement, Privacy Policy,</span> and <span className='text-primary fw-bold'>Cookie Policy.</span> </p>
+                  <Button type='submit' className='agreeBtn'>Agree & Join</Button>
+                  <Divider><span className='or'>Or</span></Divider>
+                  {/* <Button onClick={() => loginWithRedirect()} className='google'> <span ><img className='googleImg' src={google} alt="" /></span> <span className=''>Continue with Google</span> </Button> */}
+                  <h6 className='mt-3 d-flex justify-content-center'>Already on LinkedIn? <span className='text-primary ms-1 siginLink'> <a href="/">Sign in</a></span></h6>
+                </Form>
+              </>)}
+            </div>
           </div >
         </div>
         <Context.Provider value={contextValue}>

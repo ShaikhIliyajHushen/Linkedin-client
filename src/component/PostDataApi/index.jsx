@@ -15,7 +15,8 @@ import { Link } from 'react-router-dom';
 import EmojiPicker from 'emoji-picker-react';
 import { API_ENDPOINTS, apiFetch } from '../api/api_Endpoints';
 import HighlightedComment from './HighlightedComment';
-
+import { Box, Typography, Avatar } from '@mui/material';
+import Linkedin_Logo from '../Home/assets/Logo-LinkedIn-Round.png'
 function Index() {
     const [likeBtn, setLikeBtn] = useState({});
     const [isCommentVisible, setCommentVisible] = useState({});
@@ -381,9 +382,9 @@ function Index() {
     )
 
 
- 
-      
-      
+
+
+
 
     const [loadedImages, setLoadedImages] = useState({});
 
@@ -488,12 +489,33 @@ function Index() {
         }
     };
 
-  console.log("welcome",welcome)
+    console.log("welcome", welcome)
 
     return (
         <>
+        { welcome?.length > 0 && (
+            <Card sx={{ display: 'flex', margin: 2, boxShadow: 2 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', padding: 2 }}>
+                    <Avatar
+                        alt="LinkedIn"
+                        src={Linkedin_Logo}
+                        sx={{ width: 50, height: 50, marginRight: 2 }}
+                    />
+                    <Box>
+                        <Typography variant="h5" component="div">
+                            {welcome[0]?.firstname}
+                        </Typography>
+                    </Box>
+                </Box>
+                <Box sx={{width:'550px',paddingLeft:'15px', mb:2}}>
+                <Typography variant="body4" color="text.secondary">
+                            {welcome[0]?.caption}
+                        </Typography>
+                </Box>
+            </Card>
+            )}
             <div>
-                {cart?.length > 0 ? (
+                {cart? (cart?.length > 0 ? (
                     cart?.map((items) => (
                         <Card className='mb-3 responsive responsiveTablet' style={{ width: '35rem', borderRadius: '12px' }} key={items._id}>
                             <div className='profileName d-flex'>
@@ -823,7 +845,14 @@ function Index() {
                             )}
                         </Card>
                     ))
-                ) : (
+                ) :  (
+                    // If cart is empty, display nothing or a message instead of skeleton loading
+                    <Typography variant="body2" color="text.secondary">
+                       {/* No post available */}
+                    </Typography>
+                )
+                
+            ) : (
                     [1, 2, 3].map((items) => <Skeletons key={items} />)
                 )}
                 {imageUrl ? <RePostModel onClose={onVerifyClose} sharePostDetails={{ userDetails: userDetails, commentDetails: commentDetails }} /> : ""}

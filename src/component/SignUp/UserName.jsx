@@ -214,7 +214,7 @@ function UserName(props) {
 
     return (
         <div>
-            <div className='name nameFL p-1 d-flex justify-content-center'>
+            <div className='name nameFL p-4 d-flex justify-content-center'>
                 <Form onSubmit={handleJoinClick}>
                     <div className='d-flex justify-content-center'>
                         {/* <div className='profileImge mb-4'>
