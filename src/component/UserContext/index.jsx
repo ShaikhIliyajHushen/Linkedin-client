@@ -15,6 +15,8 @@ export const UserProvider = ({ children }) => {
   const [profileImg, setProfileImg] = useState('');
   const [coverImg, setCoverImg] = useState('');
   const [welcome,setWelcome] = useState('');
+  const [showAnotherCard, setShowAnotherCard] = useState(false);
+
   // const [id setId]= useState();
 
   // const TokenData = localStorage.getItem("Token")
@@ -34,26 +36,30 @@ export const UserProvider = ({ children }) => {
   //         });
   // }, [id]);
 
-  const TokenData = localStorage.getItem("Token");
-  // console.log("Token Data:", TokenData);
+  useEffect(() => {
+    const TokenData = localStorage.getItem("Token");
 
-  let id;
-  try {
-    const decodedToken = jwt_decode(TokenData);
-    if (decodedToken.exp < Math.floor(Date.now() / 1000)) {
-      console.error("Token has expired");
-      // navigate('/');
-    } else {
-      id = decodedToken.id;
+    if (TokenData) {
+      try {
+        const decodedToken = jwt_decode(TokenData);
+        if (decodedToken.exp < Math.floor(Date.now() / 1000)) {
+          console.error("Token has expired");
+          // Optionally navigate to login or handle expired token
+        } else {
+          setLinkedOneId(decodedToken.id);
+          setFirstname(decodedToken.firstname || ''); 
+          setLastname(decodedToken.lastname || '');   
+        }
+      } catch (error) {
+        console.error("Token decoding error:", error);
+        // Optionally navigate to login or handle error
+      }
     }
-  } catch (error) {
-    console.error("Token decoding error:", error);
-    // navigate('/');
-  }
+  }, []);
 
   useEffect(() => {
-    if (id) {
-      axios.get(`${baseUrl}/signup/${id}`)
+    if (linkedOneId) {
+      axios.get(`${baseUrl}/signup/${linkedOneId}`)
         .then((res) => {
           setCoverImg(res?.data?.data.cover);
           setProfileImg(res?.data?.data.profile);
@@ -63,8 +69,7 @@ export const UserProvider = ({ children }) => {
           console.log('API Error:', err);
         });
     }
-  }, [id]);
-
+  }, [linkedOneId]);
 
 
 return (
@@ -73,7 +78,9 @@ return (
       setProfileImg, firstname, lastname, setFirstname,
       setLastname, linkedOneId,
       setLinkedOneId,
-      welcome
+      welcome,
+      setShowAnotherCard,
+      showAnotherCard
     }}>
       {children}
     </UserContext.Provider>

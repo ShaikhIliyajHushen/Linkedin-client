@@ -40,18 +40,18 @@ function Index() {
     const decodedToken = jwt_decode(TokenData)
     const { firstname, lastname, profile, id } = decodedToken;
     let fullName = firstname + " " + lastname
-
+    const ids = id;
 
     //Minimum Comment Show Initial
     const MinimumComments = 2; //
     const [showAllComments, setShowAllComments] = useState(false);
 
-    const Liked = (postId) => {
-        setLikeBtn(prevState => ({
-            ...prevState,
-            [postId]: !prevState[postId]
-        }));
-    };
+    // const Liked = (postId) => {
+    //     setLikeBtn(prevState => ({
+    //         ...prevState,
+    //         [postId]: !prevState[postId]
+    //     }));
+    // };
 
     useEffect(() => {
         // getCartData()
@@ -83,7 +83,7 @@ function Index() {
     //         console.log(err);
     //     }
     // };
-
+ const [loading , setLoading] = useState(true)
     const getAllPost = async () => {
         try {
             const res = await apiFetch('FRIEND_LIST', { id }, 'GET');
@@ -91,12 +91,13 @@ function Index() {
             // console.log("res.data",res.combinedData)
             const initialLikeBtnState = {};
             const initialLikeCountState = {};
-
             res.combinedData.forEach((post) => {
                 initialLikeBtnState[post._id] = post.likedByUser; // Assuming your API returns if the user liked the post
                 initialLikeCountState[post._id] = post.likes.length || 0;
             });
-
+            if(res.combinedData){
+                setLoading(false)
+             }
             setLikeBtn(initialLikeBtnState);
             setLikeCount(initialLikeCountState);
         }
@@ -445,78 +446,129 @@ function Index() {
     //     }
     // };
 
+    // useEffect(() => {
+    //     const fetchLikedPosts = async () => {
+    //         try {
+    //             const response = await apiFetch('FETCH_LIKED_POSTS', { id }, 'GET');
+    //             const likedPosts = response?.likedPosts || [];
+
+    //             const likeButtonState = likedPosts.reduce((acc, post) => {
+    //                 acc[post._id.toString()] = true;  // Store liked status by post ID
+    //                 return acc;
+    //             }, {});
+
+    //             setLikeBtn(likeButtonState);
+    //         } catch (error) {
+    //             console.error("Error fetching liked posts", error);
+    //         }
+    //     };
+    //     fetchLikedPosts();
+    // }, [id]);
+
+
+    // const handleLikesOnPost = async (postId) => {
+    //     try {
+    //         const userId = {
+    //             userId: id // Assume 'id' is the logged-in user ID
+    //         };
+
+    //         const response = await apiFetch('LIKE_ON_POST', { postId }, 'POST', userId);
+
+    //         setLikeBtn((prev) => ({
+    //             ...prev,
+    //             [postId]: response.liked
+    //         }));
+
+    //         setLikeCount((prev) => ({
+    //             ...prev,
+    //             [postId]: response.likeCount
+    //         }));
+    //     } catch (error) {
+    //         console.error('Error updating likes', error);
+    //     }
+    // };
+
     useEffect(() => {
         const fetchLikedPosts = async () => {
             try {
-                const response = await apiFetch('FETCH_LIKED_POSTS', { id }, 'GET');
+                const response = await apiFetch('FETCH_LIKED_POSTS', { ids }, 'GET');
                 const likedPosts = response?.likedPosts || [];
-                console.log("likedPosts", likedPosts)
+                console.log("Fetched likedPosts:", likedPosts);
+
                 const likeButtonState = likedPosts.reduce((acc, post) => {
-                    acc[post._id.toString()] = true;  // Use _id as the key
+                    if (post._id) {
+                        acc[post._id.toString()] = true; // Ensure _id is stored as a string
+                    }
                     return acc;
                 }, {});
 
-                console.log("likeButtonState", likeButtonState)
-                setLikeBtn(likeButtonState);
+                console.log("Initialized likeButtonState:", likeButtonState);
+                setLikeBtn(likeButtonState); // Update the likeBtn state
             } catch (error) {
                 console.error("Error fetching liked posts", error);
             }
         };
 
         fetchLikedPosts();
-    }, []);
+    }, [ids]);
 
-
+    // Handle like/unlike post
     const handleLikesOnPost = async (postId) => {
+        console.log("postId", postId)
         try {
-            const userId = {
-                userId: id // Assume 'id' is the logged-in user ID
-            };
+            const userId = { userId: id }; // Assume 'id' is the logged-in user ID
 
             const response = await apiFetch('LIKE_ON_POST', { postId }, 'POST', userId);
 
+            console.log("Response from like post:", response);
+
+            // Update like state and like count locally
             setLikeBtn((prev) => ({
                 ...prev,
-                [postId]: response.liked
+                [postId.toString()]: response.liked // Set 'true' if liked, 'false' if unliked
             }));
 
             setLikeCount((prev) => ({
                 ...prev,
-                [postId]: response.likeCount
+                [postId.toString()]: response.likeCount // Updated like count
             }));
+
+            console.log(`Post ${postId} updated, liked: ${response.liked}`);
         } catch (error) {
             console.error('Error updating likes', error);
         }
     };
 
-    console.log("welcome", welcome)
+    console.log("Post", cart)
 
     return (
         <>
-        { welcome?.length > 0 && (
-            <Card sx={{ display: 'flex', margin: 2, boxShadow: 2 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', padding: 2 }}>
-                    <Avatar
-                        alt="LinkedIn"
-                        src={Linkedin_Logo}
-                        sx={{ width: 50, height: 50, marginRight: 2 }}
-                    />
-                    <Box>
-                        <Typography variant="h5" component="div">
-                            {welcome[0]?.firstname}
-                        </Typography>
+            {welcome?.length > 0 && (
+                <Card sx={{ display: 'flex', margin: 2, boxShadow: 2 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', padding: 2 }}>
+                        <Avatar
+                            alt="LinkedIn"
+                            src={Linkedin_Logo}
+                            sx={{ width: 50, height: 50, marginRight: 2 }}
+                        />
+                        <Box>
+                            <Typography variant="h5" component="div">
+                                {welcome[0]?.firstname}
+                            </Typography>
+                        </Box>
                     </Box>
-                </Box>
-                <Box sx={{width:'550px',paddingLeft:'15px', mb:2}}>
-                <Typography variant="body4" color="text.secondary">
+                    <Box sx={{ width: '550px', paddingLeft: '15px', mb: 2 }}>
+                        <Typography variant="body4" color="text.secondary">
                             {welcome[0]?.caption}
                         </Typography>
-                </Box>
-            </Card>
+                    </Box>
+                </Card>
             )}
             <div>
-                {cart? (cart?.length > 0 ? (
-                    cart?.map((items) => (
+                {loading ? (
+                    [1, 2, 3].map((items) => <Skeletons key={items} />)
+                ) : cart && cart.length > 0 ? (
+                    cart.map((items) => (
                         <Card className='mb-3 responsive responsiveTablet' style={{ width: '35rem', borderRadius: '12px' }} key={items._id}>
                             <div className='profileName d-flex'>
                                 <div>
@@ -640,18 +692,20 @@ function Index() {
                                         </Button> */}
 
                                         <Button
-                                            className='btnlLike'
+                                            className='btnLike'
                                             variant="light"
                                             onClick={() => handleLikesOnPost(items._id)}
+                                        // disabled={likeBtn[items._id.toString()] === undefined} // Disable button if data not ready
                                         >
-                                            {likeBtn[items._id] ? (
-                                                <i className="fa-solid fa-thumbs-up fs-6"></i>  // Liked state (solid icon)
+                                            {likeBtn[items._id.toString()] ? (  // Use .toString() to ensure key match
+                                                <i className="fa-solid fa-thumbs-up fs-6"></i> // Liked state (solid icon)
                                             ) : (
-                                                <i className="fa-regular fa-thumbs-up fs-6"></i>  // Unliked state (outline icon)
+                                                <i className="fa-regular fa-thumbs-up fs-6"></i> // Unliked state (outline icon)
                                             )}
                                             <span className="m-2 btnicons">Like</span>
-                                            {console.log("likeBtn[items._id]:", likeBtn[items._id])}
-                                            {console.log("Type of items._id:", typeof items._id)};
+                                            {/* <span>{likeCount[items._id.toString()] || 0}</span>  */}
+                                            {/* {console.log("likeBtn[items._id]:", likeBtn[items._id.toString()])}
+                                            {console.log("Type of items._id:", typeof items._id)} */}
                                         </Button>
 
 
@@ -845,15 +899,10 @@ function Index() {
                             )}
                         </Card>
                     ))
-                ) :  (
-                    // If cart is empty, display nothing or a message instead of skeleton loading
+                ) : (
                     <Typography variant="body2" color="text.secondary">
-                       {/* No post available */}
+                        {/* No items in the cart. */}
                     </Typography>
-                )
-                
-            ) : (
-                    [1, 2, 3].map((items) => <Skeletons key={items} />)
                 )}
                 {imageUrl ? <RePostModel onClose={onVerifyClose} sharePostDetails={{ userDetails: userDetails, commentDetails: commentDetails }} /> : ""}
             </div>

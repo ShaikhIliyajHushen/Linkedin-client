@@ -4,7 +4,7 @@ import './index.css'
 function Index() {
   return (
     <div className='msgtp'>
-      Message
+      Message Under Development...
     </div>
   )
 }

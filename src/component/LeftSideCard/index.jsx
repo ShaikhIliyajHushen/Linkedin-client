@@ -9,11 +9,11 @@ import jwt_decode from "jwt-decode";
 import { Link } from 'react-router-dom';
 
 function Index() {
-    const { profileImg, coverImg } = useContext(UserContext);
+    const { profileImg, coverImg, firstname, lastname } = useContext(UserContext);
 
-    const TokenData = localStorage.getItem("Token")
-    const decodedToken = jwt_decode(TokenData)
-    const { firstname, lastname } = decodedToken;
+    // const TokenData = localStorage.getItem("Token")
+    // const decodedToken = jwt_decode(TokenData)
+    // const { firstname, lastname } = decodedToken;
 
 
 

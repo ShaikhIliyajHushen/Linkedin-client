@@ -115,6 +115,7 @@
     margin-top: 15px;
     background-color: rgb(252, 252, 252);
     bottom: 0px;
+    position: absolute;
 }
 
 .footer p {

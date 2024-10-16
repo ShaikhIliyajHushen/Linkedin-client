@@ -112,7 +112,7 @@ function Index() {
                                     <div>
                                         <input
                                             ref={fileInputRef}
-                                            type="file"
+                                            // type="file"
                                             style={{ display: 'none' }}
                                             onClick={imageUpload}
                                             onChange={handleFileInputChange}

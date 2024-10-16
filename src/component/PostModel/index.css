@@ -1,13 +1,17 @@
-.Anyone{
-    width: 130px;
-    border-radius: 20px;
-    height: 38px !important;
-    border: 1px solid;
-    display: flex;
-    justify-content: center;
-    background-color: transparent;
-    color: black;
+.Anyone {
+  width: 111px;
+  height: 25px !important;
+  border-radius: 20px;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  background-color: transparent;
+  color: black;
+  gap: 5px; 
+  padding: 0 0px; 
 }
+
 
 .border-input {
     border: none;
