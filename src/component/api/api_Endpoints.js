@@ -3,7 +3,6 @@
 import axios from 'axios';
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
-console.log("baseUrl",baseUrl)
 const cloudinaryUrl = process.env.REACT_APP_CLOUD_STORAGE_URL;
 
 export const API_ENDPOINTS = {
@@ -69,7 +68,7 @@ export const apiFetch = async (endpointKey, params = {}, method = 'GET', request
         return response.data;
     } catch (error) {
          // Check if error has a response and include status code and data
-         if (error.response && error.response.status === 409) {
+         if (error.response && error.response.status === 409 || error.response.status === 400) {
             // Create a detailed error object including status and data
             const detailedError = {
                 status: error.response.status,

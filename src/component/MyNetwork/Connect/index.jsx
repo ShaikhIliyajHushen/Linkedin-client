@@ -52,7 +52,7 @@ const Index = () => {
     try {
       const res = await apiFetch('GET_FRIEND_REQUEST', { id }, 'GET');
       setGetFriends(res.user.friendRequests)
-      // console.log("res.data", res.user.friendRequests)
+      console.log("res.data", res.user.friendRequests)
     }
     catch (err) {
       console.log(err)
@@ -136,7 +136,7 @@ const Index = () => {
   const [connect, setConnect] = useState({})
 
   const handleConnect = async (items, index) => {
-    console.log('requestConnectorId: ' + items._id.toString());
+    // console.log('requestConnectorId: ' + items._id.toString());
     const requestDetails = {
       senderId: id,
       receiverId: items._id.toString(),
@@ -214,7 +214,7 @@ const Index = () => {
 
 
   const acceptFriendRequest = async (itm) => {
-    console.log("itm", itm)
+    // console.log("itm", itm)
     const acceptorIds = {
       userId: id,
       sender: itm.sender._id
@@ -237,10 +237,10 @@ const Index = () => {
       userId: id,
       sender: itm.sender._id
     };
-    console.log("rejectId:", rejectId);
+    // console.log("rejectId:", rejectId);
     try {
       const res = await apiFetch('REJECT_REQUEST', {}, 'DELETE', rejectId);
-      console.log("res.data", res.message)
+      // console.log("res.data", res.message)
       getUserFriendRequests();
     }
     catch (err) {
@@ -266,12 +266,12 @@ const Index = () => {
                     <div>
                       <img
                         // src={itm.profile} 
-                        src={itm.sender.profile ? itm.sender.profile : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                        src={itm?.sender?.profile ? itm?.sender?.profile : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
                         style={{ borderRadius: '50%', width: '80px', height: '80px' }} alt="" />
                     </div>
                     <div className='ms-2 mt-2'>
-                      <h6>{itm.sender.firstname} {itm.sender.lastname}</h6>
-                      <span>{itm.createdAt}</span>
+                      <h6>{itm?.sender?.firstname} {itm?.sender?.lastname}</h6>
+                      <span>{itm?.createdAt}</span>
                     </div>
                   </div>
                   <div className='deleteBtn'>

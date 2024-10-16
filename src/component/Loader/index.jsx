@@ -7,11 +7,12 @@ const Loader = () => {
   return (
     <Box
       sx={{
-        width: '100vw',
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop:'150px',
       }}
     >
       <Typography variant="h5" component="h5">

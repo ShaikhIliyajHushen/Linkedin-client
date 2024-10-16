@@ -16,7 +16,7 @@ function Index() {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true)
   // console.log("notifications", notifications)
-
+  const [notifyLod, setNotifyLod] = useState(true)
   const TokenData = localStorage.getItem("Token")
   const decodedToken = jwt_decode(TokenData)
   const { id } = decodedToken;
@@ -34,6 +34,9 @@ function Index() {
       // console.log("res.data", res.notifications)
       setNotifications(res.notifications.reverse());
       setLoading(false)
+      if(res.notifications.length > 0){
+        setNotifyLod(false)
+      }
     }
     catch (err) {
       console.log('API Error:', err);
@@ -95,27 +98,34 @@ function Index() {
             </Card>
           </div>
           <div className='col-sm-6 col-md-8 col-lg-6'>
-            <Card className='mb' style={{ width: '38rem', borderRadius: '12px', backgroundColor: '#D7E9FB' }}>
-              {notifications?.map((itm) => (
-                <div key={itm}>
-                  <div className='notificationContainer'>
-                    <div className='notifying'>
-                      <div>
-                        <img src={itm.actor.profile} style={{ borderRadius: '50%', width: '50px', height: '50px' }} alt="" />
-                      </div>
-                      <div className='ms-2 mt-2' >
-                        <h6 >{itm.actor.firstname}{itm.actor.lastname}</h6>
-                        <h6 style={{ fontSize: '10px' }}>{itm.message}</h6>
-                        {/* <h6 style={{ fontSize: '10px' }}>{formatTime(itm.createdAt)}</h6> */}
-                        <h6 style={{ fontSize: '10px' }}>{itm.createdAt}</h6>
-                        {/* <h6 style={{ fontSize: '10px' }}>{formatTime(new Date(itm.time))}</h6> */}
+            {notifyLod ? <span className='notifiLod'>No Notification</span> :
+              <Card className='mb' style={{ width: '38rem', borderRadius: '12px', backgroundColor: '#D7E9FB' }}>
+                {notifications?.map((itm) => (
+                  <div key={itm}>
+                    <div className='notificationContainer'>
+                      <div className='notifying'>
+                        <div>
+                          {itm?.actor?.profile ?
+                            <img src={itm?.actor?.profile} style={{ borderRadius: '50%', width: '50px', height: '50px' }} alt="" />
+                            :
+                            <img style={{ borderRadius: '50%', width: '50px', height: '50px' }} src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="" />
+                          }
+                          {/* <img src={itm.actor.profile} style={{ borderRadius: '50%', width: '50px', height: '50px' }} alt="" /> */}
+                        </div>
+                        <div className='ms-2 mt-2' >
+                          <h6 >{itm.actor.firstname}{itm.actor.lastname}</h6>
+                          <h6 style={{ fontSize: '10px' }}>{itm.message}</h6>
+                          {/* <h6 style={{ fontSize: '10px' }}>{formatTime(itm.createdAt)}</h6> */}
+                          <h6 style={{ fontSize: '10px' }}>{itm.createdAt}</h6>
+                          {/* <h6 style={{ fontSize: '10px' }}>{formatTime(new Date(itm.time))}</h6> */}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))
-              }
-            </Card>
+                ))
+                }
+              </Card>
+            }
           </div>
           <div>
             <Card className='prodetails_1 mt-2'>

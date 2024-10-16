@@ -9,8 +9,8 @@ import { useState } from 'react';
 import UserName from './UserName';
 import { notification } from 'antd';
 import React, { useMemo } from 'react';
-// import { useContext } from 'react';
-// import { UserContext } from '../UserContext';
+import { useContext } from 'react';
+import { UserContext } from '../UserContext';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from 'react-router';
 import { apiFetch } from '../api/api_Endpoints';
@@ -20,16 +20,19 @@ import { Box } from '@mui/material';
 function BasicExample() {
   const navigate = useNavigate();
   const [linkedId, setLinkedId] = useState()
-  const [showAnotherCard, setShowAnotherCard] = useState(false);
+  // const [showAnotherCard, setShowAnotherCard] = useState(false);
   const [email, setEmail] = useState();
   const [emailError, setEmailError] = useState(false);
   const [password, setPassword] = useState();
   const [passwordError, setPasswordError] = useState(false);
-  const ergx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@gmail\.com$/;
+  const ergx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
   const prgx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/
+  const [loading, setLoading] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
+  const [save, setSave] = useState(false)
   let a = localStorage.getItem("id");
 
-  // const { setLinkedOneId } = useContext(UserContext);
+  const { setShowAnotherCard, showAnotherCard } = useContext(UserContext);
 
   const { loginWithRedirect, user, isAuthenticated } = useAuth0();
   if (isAuthenticated) {
@@ -104,9 +107,6 @@ function BasicExample() {
     }
   };
 
-
-  const [loading, setLoading] = useState(false); 
-  const [responseMessage, setResponseMessage] = useState('');
 
   // const handleSubmitFun = async (e) => {
   //   e.preventDefault();
@@ -215,39 +215,43 @@ function BasicExample() {
 
     if (isValid) {
       try {
-        setLoading(true); // Start loading
+        setLoading(true);
+        setSave(true)
         const requestBody = {
           email: email,
           password: password,
         };
         const res = await apiFetch('GET_ALL_SIGNUP', {}, 'POST', requestBody);
-        console.log("res==>", res.data);
+        // console.log("res.status =>", res.status);
         setLinkedId(res._id)
-       // Check for specific error conditions
-      if (res.status === 409) {
-        setResponseMessage(res.data?.message || 'Email already exists');
-        openNotification('topLeft');
-      } else if (res.status === 400) {
-        setResponseMessage(res.data?.message || 'Please enter a valid email');
-        openNotification('topLeft');
-      } else {
-        // Successful registration
-        setLinkedId(res._id);
-        handleEmailSend();
-        setShowAnotherCard(true);
+        if (res.status === 409) {
+          setResponseMessage(res.data?.message || 'Email already exists');
+          openNotification('topLeft');
+          setSave(false)
+        } else if (res.status === 400) {
+          setResponseMessage(res.data?.message || 'Please enter a valid email');
+          openNotification('topLeft');
+          setSave(false)
+        } else {
+          setLinkedId(res._id);
+          handleEmailSend();
+          setShowAnotherCard(true);
+        }
+      } catch (err) {
+        console.error('Error object:', err); 
+        if (err.status === 409) {
+          setResponseMessage(err.data?.message || 'Email already exists');
+        } else if (err.status === 400) {
+          setResponseMessage(err.data?.message || 'Please enter a valid email');
+          openNotification('topLeft'); 
+        } else {
+          setResponseMessage('An unexpected error occurred.');
+          openNotification('topLeft');
+        }
+      } finally {
+        setLoading(false);
+        setSave(false)
       }
-    } catch (err) {
-      console.error('Error object:', err);
-      if (err.status === 409) {
-        setResponseMessage(err.data?.message || 'Email already exists');
-      } else if (err.status === 400) {
-        setResponseMessage(err.data?.message || 'Please enter a valid email');
-      } else {
-        setResponseMessage('An unexpected error occurred.');
-      }
-    } finally {
-      setLoading(false);
-    }
     }
   };
 
@@ -272,7 +276,6 @@ function BasicExample() {
     sendEmail(email, 'Linkedin Account is created', emailContent,);
   }
 
-
   return (<>
     <div className='Navsection d-flex flex-column'>
       <div>
@@ -293,9 +296,9 @@ function BasicExample() {
         <div className='textAlign-center'>
           <div className='signUp mt-3'>
             <div>
-              {loading ? <Box sx={{ width: '96%',marginLeft:'8px' }}>
+              {loading ? <Box sx={{ width: '96%', marginLeft: '8px' }}>
                 <LinearProgress />
-              </Box> : responseMessage && <div style={{ color: 'red' }}>{responseMessage}</div>}
+              </Box> : responseMessage && <div style={{ color: 'red',textAlign:'center'}}>{responseMessage}</div>}
             </div>
             <div>
               {showAnotherCard ? (
@@ -318,7 +321,7 @@ function BasicExample() {
                   </Form.Group>
                   {passwordError ? <span style={{ color: 'red' }}>uppercase letter, one digit, and one special character</span> : ""}
                   <p className='text-center'>By clicking Agree & Join, you agree to the LinkedIn <span className='text-primary fw-bold'> User Agreement, Privacy Policy,</span> and <span className='text-primary fw-bold'>Cookie Policy.</span> </p>
-                  <Button type='submit' className='agreeBtn'>Agree & Join</Button>
+                  <Button type='submit' className='agreeBtn' disabled={save}>{save ? "Joining..." : " Agree & Join"}</Button>
                   <Divider><span className='or'>Or</span></Divider>
                   {/* <Button onClick={() => loginWithRedirect()} className='google'> <span ><img className='googleImg' src={google} alt="" /></span> <span className=''>Continue with Google</span> </Button> */}
                   <h6 className='mt-3 d-flex justify-content-center'>Already on LinkedIn? <span className='text-primary ms-1 siginLink'> <a href="/">Sign in</a></span></h6>

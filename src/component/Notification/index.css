@@ -36,6 +36,7 @@
     border-radius: 10px;
     padding: 14px;
     width: 295px;
+    border-width: 0px !important;
 }
 .rightRoundImg_1 {
     width: 75px;
@@ -67,4 +68,16 @@
     margin: 25px;
     font-weight: 600;
     
+}
+
+.mb{
+    --bs-card-border-width: 0px !important;
+}
+
+.notifiLod{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: larger;
 }

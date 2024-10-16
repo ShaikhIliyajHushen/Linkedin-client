@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router';
 import profileAvatr from '../Home/assets/ProfileImgAvtar.webp';
 import { apiFetch } from '../api/api_Endpoints';
 import { notification } from 'antd';
-
+import { useContext } from 'react';
+import { UserContext } from '../UserContext';
 
 function UserName(props) {
     const { linkedId, email, password, setShowAnotherCard } = props
@@ -16,6 +17,8 @@ function UserName(props) {
     const [profile, setProfile] = useState();
     const navigate = useNavigate();
     const fileInputRef = useRef(null);
+
+  const { linkedOneId } = useContext(UserContext);
 
 
     const Context = React.createContext({
@@ -73,6 +76,7 @@ function UserName(props) {
 
     const [url, setUrl] = useState("");
 
+    const linkedIdToUse = linkedId ?? linkedOneId;
     const handleJoinClick = async (e) => {
         e.preventDefault();
         // const data = new FormData();
@@ -119,7 +123,7 @@ function UserName(props) {
                 firstname: firstname,
                 lastname: lastName
             };
-            const res = await apiFetch('UPDATE_PROFILE_NAME', { linkedId }, 'PUT', requestBody);
+            const res = await apiFetch('UPDATE_PROFILE_NAME', { linkedIdToUse }, 'PUT', requestBody);
             // handleEmailSend()
             console.log("res",res);
             // navigate('/');
@@ -220,14 +224,13 @@ function UserName(props) {
                         {/* <div className='profileImge mb-4'>
                             {profile == <img width={108} height={109} src={profileAvatr} alt="" /> || profile == null ? "" : <img width={108} height={109} src={profile} alt="" />}
                         </div> */}
-                        <div className='profileImge mb-4'>
+                        <div className='profileImge mb-4' onClick={handleButtonClick}>
                             {profile ? (
                                 <img width={108} height={109} src={profile} alt="User Profile" />
                             ) : (
                                 <img width={108} height={109} src={profileAvatr} alt="Default Profile" />
                             )}
                         </div>
-
                         <div className='gallaryBtnProfile'>
                             <Button onClick={handleButtonClick} variant="light" >
                                 <i class="fa-solid fa-camera"></i></Button>

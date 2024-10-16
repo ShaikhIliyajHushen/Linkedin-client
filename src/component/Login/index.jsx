@@ -23,7 +23,7 @@ function Index() {
     const ergx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     const prgx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
 
-    const { setFirstname, setLastname, setLinkedOneId } = useContext(UserContext);
+    const { setFirstname, setLastname, setLinkedOneId,setShowAnotherCard } = useContext(UserContext);
 
 
     const { loginWithRedirect, user, isAuthenticated, getIdTokenClaims } = useAuth0();
@@ -123,17 +123,20 @@ function Index() {
         try{
         const res = await apiFetch('LOGIN_DETAILS', {}, 'POST', requestBody);
         if (res.token) {
-            console.log(res.token)
             localStorage.setItem("Token", res.token)
             const decodedToken = jwt_decode(res.token)
             const { firstname, lastname, id } = decodedToken;
-            setFirstname(firstname);
-            setLastname(lastname);
-            setLinkedOneId(id);
-            localStorage.setItem("id", id);
-            let a = localStorage.getItem("id");
-            if (email && password && res.token) {
-                navigate("/Feed");
+            if (!firstname || !lastname) {
+                setShowAnotherCard(true)
+                navigate("/create_account");
+            } else {
+                setFirstname(firstname);
+                setLastname(lastname);
+                setLinkedOneId(id);
+                localStorage.setItem("id", id);
+                if (email && password && res.token) {
+                    navigate("/Feed");
+                }
             }
         }
     }

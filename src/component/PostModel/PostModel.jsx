@@ -21,7 +21,7 @@ function PostModel(props) {
   const [url, setUrl] = useState("");
   const [gettingBackendData, setGettingBackendData] = useState([])
 
-  const {postModelHide} = props
+  const { postModelHide } = props
 
   const handleClose = () => props.onClose(true)
   const handleDismiss = () => props.onClose(false)
@@ -273,15 +273,15 @@ function PostModel(props) {
         });
         console.log('Either a caption or an image is required.');
         return;
-    }
+      }
 
       const newData = {
         ...(imageUrl && { image: imageUrl }),
         ...(text && { caption: text }),
-        firstname:firstname,
-        lastname:lastname,
-        profile:profile,
-        recipient:id,
+        firstname: firstname,
+        lastname: lastname,
+        profile: profile,
+        recipient: id,
         comments: [],
         time: getCurrentTime(),
       };
@@ -306,28 +306,28 @@ function PostModel(props) {
       <Box >
         <Modal show={show} onHide={handleDismiss} style={{}}>
           <Modal.Header closeButton>
-            <Modal.Title>{postModelHide?"Create a post" :"Upload Post" }</Modal.Title>
+            <Modal.Title>{postModelHide ? "Create a post" : "Upload Post"}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-           {postModelHide && (<>
-            <div className='d-flex mt-1 ms-2 '>
-              <div >
-                <img className='messageProfile' src={profile} alt="" />
-              </div>
-              <div className='ms-2 massageName'>
-                {firstname + " " + lastname}
-                <div>
-                  <Button size='small' onClick={postModel} variant="light" className='Anyone'>
-                    <i className="mt-1 me-2 fa-solid fa-earth-americas"></i>
-                    <div>Anyone <i class="fa-solid fa-caret-down"></i>
-                    </div>
-                  </Button>
+            {postModelHide && (<>
+              <div className='d-flex mt-1 ms-2 '>
+                <div >
+                  {profile ?
+                    <img className='messageProfile' src={profile} alt="" /> : <img className='messageProfile' src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="" />}
+                </div>
+                <div className='ms-2 massageName'>
+                  {firstname + " " + lastname}
+                  <div>
+                    <Button size='small' onClick={postModel} variant="light" className='Anyone'>
+                      <i className="fa-solid fa-earth-americas"></i>
+                      <div>Anyone <i className="fa-solid fa-caret-down"></i></div>
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <input type="text" onChange={handleText} name='text' value={text} placeholder='write your post' className='border-input' />
-            </div>
+              <div>
+                <input type="text" onChange={handleText} name='text' value={text} placeholder='write your post' className='border-input' />
+              </div>
             </>)}
             <div className='mt-3'>
               {image == "" || image == null ? "" : <img width={470} height={300} src={image} alt="" />}
